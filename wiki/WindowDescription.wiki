@@ -1,13 +1,16 @@
-#summary One-sentence summary of this page.
-
-= Introduction =
-
-Add your content here.
+#обсуждение вида окон
 
 
-= Details =
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+Ваня, есть некоторые замечания...
+
+
+1. Возможно стоит по умолчанию считать, что одна группа?
+
+2. Проекций вроде было 4, а не 3...
+
+3. Пункт меню "настройки"/"параметры" где-то должен быть...
+
+4. "..." - что-то вида  урок/учитель/кабинет?
+
+5. Разделение понедельника и вторника, наверное стоит сделать более жирным, чем уроки в одном дне...
