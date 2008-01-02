@@ -1,4 +1,5 @@
 #summary требования функций
+#labels Phase-Design
 
 = Introduction =
 
