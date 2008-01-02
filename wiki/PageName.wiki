@@ -1,0 +1,43 @@
+#summary One-sentence summary of this page.
+
+= Introduction =
+
+Add your content here.
+
+
+= Details =
+
+Рассмотрим, какие функции требуются.
+
+Во-первых, требуется передать кол-во классов(школьных) и названия их.
+Наверное, стоит передать их в виде структуры int и указатель на список строчек(всмысле подряд записанные названия). Чего-нибудь вида:
+FormList take_form_list(){}, где FormList - такая структура.
+
+Также наверное понадобятся список учителей и предметов и кабинетов. (То, какому учителю - какие предметы, врядли понадобится)
+
+TeacherList take_teacher_list(){}
+SubjectList take_subject_list(){}
+RoomList take_room_list(){}
+
++
+
+int number_of_lessons(){}
+int number_of_learning_days(){} 
+int max_number_of_groups(){}
+
+
+
+Во-вторых, требуется заполнить с самого начала клетки, и вообще иметь возможность окнам изменять где-то (на оперативной памяти) хранящиеся данные. Поэтому надо, чтобы окна могли узнать где, что лежит.
+Поэтому требуется что-то вида:
+
+
+int* number_of_groups(int form, int lesson_day, int lesson_time){}  , где int form - порядковый номер класса
+int* teacher(int form, int lesson_day, int lesson_time, int group){}  , где teacher - порядковый номер учителя
+int* subject(int form, int lesson_day, int lesson_time, int group){}     -||- 
+int* room(int form, int lesson_day, int lesson_time, int group){}     -||-
+
+Возможно, если знать как именно расположенны эти ячейки в памяти, то будет быстрее дать мне один указатель и пусть я сам высчитываю от него, где остальные
+
+
+В-третьих, надо уметь получать список доступных кабинетов/учителей/предметов (доступных предметов с учётом учителя). Тут есть некоторая сложность. Этот список я хочу использовать как параметр у функции, которая даёт варианты для заполнения ( пример вызова функции: 
+" this->textBox1->AutoCompleteCustomSource->AddRange(gcnew cli::array< System::String^  >(6) {L"vfdavds", L"dwfEwraf", L"cedwftgwTE", L"VDEAGHBDXGCVB", L"\\FSZDVXBF", L"fdgbxvc "}); "). А это какой-то очень хитрый тип. Возможно, когда мы в нём разберёмся, его можно будет использовать и в первых функциях.
