@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual C++ Express 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Sched", "Sched\Sched.vcproj", "{051079D6-AE54-4D9C-AD78-92E3906D62DA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{051079D6-AE54-4D9C-AD78-92E3906D62DA}.Debug|Win32.ActiveCfg = Debug|Win32
+		{051079D6-AE54-4D9C-AD78-92E3906D62DA}.Debug|Win32.Build.0 = Debug|Win32
+		{051079D6-AE54-4D9C-AD78-92E3906D62DA}.Release|Win32.ActiveCfg = Release|Win32
+		{051079D6-AE54-4D9C-AD78-92E3906D62DA}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
