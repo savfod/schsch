@@ -11,5 +11,10 @@ private:
 public:
 	BigBox(void);
 
+	int groups();
+
+	SimpleBox BigBox::operator[](int i);
+
 	~BigBox(void);
 };
+
