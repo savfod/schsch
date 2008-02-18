@@ -19,8 +19,7 @@ IMPLEMENT_DYNCREATE(CChildFrame, CMDIChildWnd)
 
 BEGIN_MESSAGE_MAP(CChildFrame, CMDIChildWnd)
 	//{{AFX_MSG_MAP(CChildFrame)
-		// NOTE - the ClassWizard will add and remove mapping macros here.
-		//    DO NOT EDIT what you see in these blocks of generated code !
+	ON_WM_SIZE()
 	//}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
@@ -68,3 +67,29 @@ void CChildFrame::Dump(CDumpContext& dc) const
 
 /////////////////////////////////////////////////////////////////////////////
 // CChildFrame message handlers
+
+BOOL CChildFrame::OnCreateClient(LPCREATESTRUCT lpcs, CCreateContext* pContext) 
+{
+	// TODO: Add your specialized code here and/or call the base class
+	CRect rc;
+	GetClientRect( rc );
+	if( !ctl.Create( WS_CHILD | WS_VISIBLE , rc , this , 100 ) )
+		return -1;
+
+	ctl.InsertItem( 0 , "Hello World 0" );
+	ctl.InsertItem( 1 , "Hello World 1 " );
+	ctl.InsertItem( 2 , "Hello World 2" );
+	ctl.InsertItem( 3 , "Hello World 3" );
+
+	return CMDIChildWnd::OnCreateClient(lpcs, pContext);
+}
+
+void CChildFrame::OnSize(UINT nType, int cx, int cy) 
+{
+	CMDIChildWnd::OnSize(nType, cx, cy);
+	CRect rc;
+	GetClientRect( rc );
+	ctl.MoveWindow( rc );
+	// TODO: Add your message handler code here
+	
+}
