@@ -19,7 +19,7 @@ protected: // create from serialization only
 // Attributes
 public:
 	CSchSchDoc* GetDocument();
-
+	CTabCtrl ctl;
 // Operations
 public:
 
@@ -29,7 +29,7 @@ public:
 	public:
 	virtual void OnDraw(CDC* pDC);  // overridden to draw this view
 	virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
-	protected:
+	virtual BOOL Create(LPCTSTR lpszClassName, LPCTSTR lpszWindowName, DWORD dwStyle, const RECT& rect, CWnd* pParentWnd, UINT nID, CCreateContext* pContext = NULL);
 	//}}AFX_VIRTUAL
 
 // Implementation
