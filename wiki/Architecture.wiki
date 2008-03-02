@@ -1,0 +1,26 @@
+#summary High-level Design
+
+= System-wide Design Decisions =
+
+  # Client-server application
+  # Using Microsoft SQL server
+  # Using Visual C++ 6.0 SDI GUI
+  # Top-level design consists of: 
+  * Client Application - AppWin, AppModel and AppPrint
+  * Database - ScheduleDB
+
+= Modules =
+
+|| *Module* || *Purpose* || *Notes* ||
+|| AppWin || Set of Client Application windows to enter/view data || ||
+|| AppModel || Class in Client Application to get/set data items || ||
+|| AppPrint || Windows/algorithms in Client Application to print final sheets || ||
+|| ScheduleDB || SQL Server database for schedule data || ||
+
+= Detailed Design Pages =
+
+  * AppWin: 
+  * AppModel API:
+  * AppModel:
+  * ScheduleDB:
+  * AppPrint:
