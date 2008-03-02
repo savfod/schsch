@@ -3,5 +3,5 @@
 
 = Top-level Task Sheet =
 
-|| Task || Owner || Reviewer || QA || Done || Released ||
-| | | | | | |
+|| *Task* || *Owner* || *Reviewer* || *QA* || *Done* || *Released* ||
+|| || || || || || ||
