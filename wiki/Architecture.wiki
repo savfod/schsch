@@ -7,7 +7,7 @@
   # Using Visual C++ 6.0 SDI GUI
   # Top-level design consists of: 
   * Client Application - !AppWin, !AppModel and !AppPrint
-  * Database - !ScheduleDB
+  * Database - ScheduleDB
 
 = Modules =
 
@@ -15,12 +15,12 @@
 || !AppWin || Set of Client Application windows to enter/view data || ||
 || !AppModel || Class in Client Application to get/set data items || ||
 || !AppPrint || Windows/algorithms in Client Application to print final sheets || ||
-|| !ScheduleDB || SQL Server database for schedule data || ||
+|| ScheduleDB || SQL Server database for schedule data || ||
 
 = Detailed Design Pages =
 
   * !AppWin: 
   * !AppModel API:
   * !AppModel:
-  * !ScheduleDB:
+  * ScheduleDB:
   * !AppPrint:
