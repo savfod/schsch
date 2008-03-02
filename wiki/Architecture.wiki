@@ -19,8 +19,8 @@
 
 = Detailed Design Pages =
 
-  * !AppWin: 
-  * !AppModel API:
-  * !AppModel:
-  * ScheduleDB:
-  * !AppPrint:
+  * !AppWin: http://code.google.com/p/schsch/wiki/AppWin
+  * !AppModel API: http://code.google.com/p/schsch/wiki/AppModelAPI
+  * !AppModel: http://code.google.com/p/schsch/wiki/AppModel
+  * ScheduleDB: http://code.google.com/p/schsch/wiki/ScheduleDB
+  * !AppPrint: http://code.google.com/p/schsch/wiki/AppPrint
