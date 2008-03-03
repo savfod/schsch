@@ -8,4 +8,4 @@
 || Window - Lessons by day, time and class (full info) || || || || ||
 || Window - Lessons by day, time and class (w/o teacher) || || || || ||
 || Window - Room/class by day, time and teacher || || || || ||
-|| Window - ? || || || || ||
+|| Window - Teacher/(may be, class) by day, time and room || || || || ||
