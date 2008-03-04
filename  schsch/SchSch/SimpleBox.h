@@ -21,15 +21,13 @@ class SimpleBox
 private:
 	int Teacher;
 	int Classroom;
-	int SubjectIndex;
-	int ClassIndex;
+	int Subject;
+	int Class;
 
 public:
 	SimpleBox(void);
 
-	SimpleBox operator=(SimpleBox Box);
-
-	int TakeMember( char Type );          //required types: 'T','R','S','D','L'
+	int TakeMember( char Type );          //required types: 'T','R','S','C'
 
 	void WriteMember( char Type, int WhatToWrite );
 

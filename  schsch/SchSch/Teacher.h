@@ -18,22 +18,27 @@ using namespace std;
 class Teacher
 {
 private:
+	vector<int> Subjects;
+
+public:
 	string name;
 	string patronymic;
 	string initials;
 	string surname;
-	vector<string> Subjects;
 
-public:
+
 	Teacher();
-	Teacher( string S );
+	Teacher( string Name, string Patronymic, string Initials, string Surname );
 
-	bool Teacher::operator ==(Teacher T);
-	bool Teacher::operator <=(Teacher T);
-	void AddSubject(string);
-	string String();
+	friend bool operator == ( Teacher, Teacher );
+	friend bool operator < ( Teacher, Teacher );
+	void AddSubject( int WhatToAdd );
+	friend string Name( Teacher T );
 
 	~Teacher(void);
 };
+
+bool operator == ( Teacher, Teacher );
+bool operator < ( Teacher, Teacher );
 
 #endif // !defined(AFX_TEACHER_H__6F264D97_E5CE_409E_A04F_14D1876F2EF7__INCLUDED_)
