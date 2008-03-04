@@ -33,32 +33,28 @@ Table::Table(int HowManyDays,int HowManyLessons,int HowManyTeachers,int HowManyS
 //*********************************************************************
 
 
-list<int> Table::FreeTeachers(int Day,int Lesson)
+vector<int> Table::BusyTeachers(int Day,int Lesson)
 {
-	list<int> L(0);
-	for(int n = NumberOfTeachers;n-1;n++)
-		L.push_back(n);
+	vector<int> L(0);
 
 	vector<BigBox>::iterator i;
 	vector<SimpleBox>::iterator j;
 	for( i = TheTable[Day][Lesson].begin(); i != TheTable[Day][Lesson].end(); i++ )
 		for( j = (*i).begin() ; j != (*i).end() ; j++ )
-			L.remove( (*j).TakeMember( 'T' ) );
+			L.push_back( (*j).TakeMember( 'T' ) );
 
 	return(L);
 };
 
-list<int> Table::FreeClassrooms(int Day,int Lesson)
+vector<int> Table::BusyClassrooms(int Day,int Lesson)
 {
-	list<int> L(0);
-	for(int n = NumberOfClassrooms;n-1;n++)
-		L.push_back(n);
+	vector<int> L(0);
 
 	vector<BigBox>::iterator i;
 	vector<SimpleBox>::iterator j;
 	for( i = TheTable[Day][Lesson].begin(); i != TheTable[Day][Lesson].end(); i++ )
 		for( j = (*i).begin() ; j != (*i).end() ; j++ )
-			L.remove( (*j).TakeMember( 'R' ) );
+			L.push_back( (*j).TakeMember( 'R' ) );
 
 	return(L);
 };
@@ -66,52 +62,28 @@ list<int> Table::FreeClassrooms(int Day,int Lesson)
 
 //*********************************************************************
 
-void Table::Add( char Type, int WhatToAdd )
+void Table::Add( char Type )
 {
 	switch( Type )
 	{
 	case 'T':
 			{
 				NumberOfTeachers++;
-				for ( int Day = 0; Day != NumberOfDays; Day++ )
-					for ( int Lesson = 0; Lesson != NumberOfDays; Lesson++ )
-						for( vector< BigBox >::iterator i= TheTable[Day][Lesson].begin(); i != TheTable[Day][Lesson].end(); i++ )
-							for( vector< SimpleBox >::iterator j = (*i).begin() ; j != (*i).end() ; j++ )
-								if( (*j).TakeMember( 'T' ) >= WhatToAdd )
-									(*j).WriteMember( 'T', (*j).TakeMember( 'T' ) + 1 );
 				break;
 			};
 	case 'R':
 			{
 				NumberOfClassrooms++;
-				for ( int Day = 0; Day != NumberOfDays; Day++ )
-					for ( int Lesson = 0; Lesson != NumberOfDays; Lesson++ )
-						for( vector< BigBox >::iterator i= TheTable[Day][Lesson].begin(); i != TheTable[Day][Lesson].end(); i++ )
-							for( vector< SimpleBox >::iterator j = (*i).begin() ; j != (*i).end() ; j++ )
-								if( (*j).TakeMember( 'R' ) >= WhatToAdd )
-									(*j).WriteMember( 'R', (*j).TakeMember( 'R' ) + 1 );
 				break;
 			};
 	case 'C':
 			{
 				NumberOfClasses++;
-				for ( int Day = 0; Day != NumberOfDays; Day++ )
-					for ( int Lesson = 0; Lesson != NumberOfDays; Lesson++ )
-						for( vector< BigBox >::iterator i= TheTable[Day][Lesson].begin(); i != TheTable[Day][Lesson].end(); i++ )
-							for( vector< SimpleBox >::iterator j = (*i).begin() ; j != (*i).end() ; j++ )
-								if( (*j).TakeMember( 'C' ) >= WhatToAdd )
-									(*j).WriteMember( 'C', (*j).TakeMember( 'C' ) + 1 );
 				break;
 			};
 	case 'S':
 			{
 				NumberOfSubjects++;
-				for ( int Day = 0; Day != NumberOfDays; Day++ )
-					for ( int Lesson = 0; Lesson != NumberOfDays; Lesson++ )
-						for( vector< BigBox >::iterator i= TheTable[Day][Lesson].begin(); i != TheTable[Day][Lesson].end(); i++ )
-							for( vector< SimpleBox >::iterator j = (*i).begin() ; j != (*i).end() ; j++ )
-								if( (*j).TakeMember( 'S' ) >= WhatToAdd )
-									(*j).WriteMember( 'S', (*j).TakeMember( 'S' ) + 1 );
 				break;
 			};
 	};
@@ -156,7 +128,7 @@ void Table::Delete( char Type, int WhatToDelete )
 			};
 	case 'S':
 			{
-				NumberOfSubjects++;
+				NumberOfSubjects--;
 				for ( int Day = 0; Day != NumberOfDays; Day++ )
 					for ( int Lesson = 0; Lesson != NumberOfDays; Lesson++ )
 						for( vector< BigBox >::iterator i= TheTable[Day][Lesson].begin(); i != TheTable[Day][Lesson].end(); i++ )
@@ -167,6 +139,17 @@ void Table::Delete( char Type, int WhatToDelete )
 			};
 	};
 };
+//*********************************************************************
+
+void Table::AddGroup( int Day, int Lesson )
+{
+	(TheTable[Day][Lesson]).push_back( vector<SimpleBox>(0) );
+};
+
+void Table::DeleteGroup( int Day, int Lesson, int NumberOfGroup )
+{
+	(TheTable[Day][Lesson]).erase(TheTable[Day][Lesson].begin()+NumberOfGroup*sizeof(int));
+};
 
 //*********************************************************************
 
@@ -176,7 +159,7 @@ bool Table::WriteTo( char Type, int Day, int Lesson, int Class, int Group, int W
 	{
 		case 'T':
 			{
-				if( ( WhatToWrite >= NumberOfTeachers ) || ( Day >= NumberOfDays ) || ( Class >= NumberOfClasses ) )
+				if( ( WhatToWrite >= NumberOfTeachers-1 ) || ( Day >= NumberOfDays-1 ) || ( Class >= NumberOfClasses-1 ) )
 				{
 					return false;
 					break;
@@ -215,7 +198,7 @@ bool Table::WriteTo( char Type, int Day, int Lesson, int Class, int Group, int W
 
 		case 'R':
 			{
-				if( ( WhatToWrite >= NumberOfClassrooms ) || ( Day >= NumberOfDays ) || ( Class >= NumberOfClasses ) )
+				if( ( WhatToWrite >= NumberOfClassrooms-1 ) || ( Day >= NumberOfDays-1 ) || ( Class >= NumberOfClasses-1 ) )
 				{
 					return false;
 					break;
@@ -254,7 +237,7 @@ bool Table::WriteTo( char Type, int Day, int Lesson, int Class, int Group, int W
 
 		case 'S':
 			{
-				if( ( WhatToWrite >= NumberOfClassrooms ) || ( Day >= NumberOfDays ) || ( Class >= NumberOfClasses ) )
+				if( ( WhatToWrite >= NumberOfClassrooms-1 ) || ( Day >= NumberOfDays-1 ) || ( Class >= NumberOfClasses-1 ) )
 				{
 					return false;
 					break;

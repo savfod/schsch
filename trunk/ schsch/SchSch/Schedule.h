@@ -22,11 +22,15 @@ using namespace std;
 class Schedule
 {
 private:
-	int NumberOfDays,NumberOfLessons;
-	vector<string> ListOfSubjects;
-	vector<string> ListOfClasses;
-	vector<Teacher> ListOfTeachers;
-	vector<string> ListOfClassrooms;
+	unsigned int NumberOfDays,NumberOfLessons;
+	unsigned int Subjects;
+	unsigned int Classes;
+	unsigned int Teachers;
+	unsigned int Classrooms;
+	map<string,int> ListOfSubjects;
+	map<string,int> ListOfClasses;
+	map<Teacher,int> ListOfTeachers;
+	map<string,int> ListOfClassrooms;
 	Table TheTable;
 
 public:
@@ -35,29 +39,43 @@ public:
 
 	//*********************************************
 
-	list<Teacher> FreeTeachers( int Day, int Lesson );
-	list<string> FreeClassrooms( int Day, int Lesson );
+	void Save( char* Filename ); //Saves Schedule(not written)
+	bool Load( char* Filename ); //Loads Schedule(not written)
 
 	//*********************************************
 
-	int Translate ( char Type, string WhatToTranslate );
-	int Translate ( Teacher T );
-	Teacher T_Translate ( int WhatToTranslate );
-	string S_Translate ( char Type, int WhatToTranslate );
+	vector<Teacher> T_FreeTeachers( int Day, int Lesson );                   //Returns list of free teachers(not written)
+	vector<Teacher> T_FreeTeachers( int Day, int Lesson, string Subject );   //Returns list of free teachers, who teaches this subject(not written)
+	vector<string> FreeTeachers( int Day, int Lesson );                      //Returns list of free teachers(not written)
+	vector<string> FreeTeachers( int Day, int Lesson, string Subject );      //Returns list of free teachers, who teaches this subject(not written)
+	vector<string> FreeClassrooms( int Day, int Lesson );                    //Returns list of free classrooms(not written)
 
 	//*********************************************
 
-	void Add( char Type, string WhatToAdd );
-	void Delete( char Type, string WhatToDelete );
-	void AddTeacher( char Type, Teacher WhatToAdd );
-	void DeleteTeacher( char Type, Teacher WhatToDelete );
+	int Translate ( char Type, string WhatToTranslate );    //converts from string with name of object to its index
+	int Translate ( Teacher WhatToTranslate );              //converts from Teacher to its index
+	Teacher T_Translate ( int WhatToTranslate );            //converts to Teacher from its index
+	string S_Translate ( char Type, int WhatToTranslate );  //converts to string with name from its index
 
 	//*********************************************
 
-	bool WriteTo( char Type, int Day, int Lesson, string Class, string WhatToWrite );
-	bool WriteTo( char Type, int Day,int Lesson, string Class, int Group, string WhatToWrite );
-	void WriteTo( char Type, int Day, int Lesson, string Class, Teacher WhatToWrite );
-	void WriteTo( char Type, int Day,int Lesson, string Class, int Group, Teacher WhatToWrite );
+	void Add( char Type, string WhatToAdd );												//adds Class,Subject or Classroom
+	void Delete( char Type, string WhatToDelete );											//deletes Class,Subject, Classroom or Teacher
+	void AddTeacher( Teacher WhatToAdd );													//adds Teacher
+	void DeleteTeacher( Teacher WhatToDelete );												//deletes Teacher
+	void AddTeacher( string Name, string Patronymic, string Initials, string Surname );     //adds Teacher with empty list of subjects
+
+	//*********************************************
+
+	void AddGroup( int Day, int Lesson );                       //Adds Group (not written)
+	void DeleteGroup( int Day, int Lesson, int NumberOfGroup ); //Deletes Group (not written)
+
+	//*********************************************
+
+	bool WriteTo( char Type, int Day, int Lesson, string Class, string WhatToWrite );              //Writes smth to a schedule box(writes to the first group). 
+	bool WriteTo( char Type, int Day,int Lesson, string Class, int Group, string WhatToWrite );    //Writes smth to a schedule box
+//	bool T_WriteTo( char Type, int Day,int Lesson, string Class, string WhatToWrite );             //Writes Teacher (not written)
+//	bool T_WriteTo( char Type, int Day,int Lesson, string Class, int Group, string WhatToWrite );  //Writes Teacher (not written)
 
 	//*********************************************
 

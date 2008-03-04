@@ -11,7 +11,6 @@
 
 #pragma once
 #include "SimpleBox.h"
-#include<list>
 #include<vector>
 
 using namespace std;
@@ -29,13 +28,18 @@ public:
 
 	//*********************************************
 
-	list<int> FreeTeachers(int Day,int Lesson);
-	list<int> FreeClassrooms(int Day,int Lesson);
+	vector<int> BusyTeachers(int Day,int Lesson);
+	vector<int> BusyClassrooms(int Day,int Lesson);
 
 	//*********************************************
 
-	void Add( char Type, int WhatToAdd );
+	void Add( char Type );
 	void Delete( char Type, int WhatToDelete );
+
+	//*********************************************
+
+	void AddGroup( int Day, int Lesson );
+	void DeleteGroup( int Day, int Lesson, int NumberOfGroup );
 
 	//*********************************************
 
