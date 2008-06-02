@@ -43,4 +43,4 @@ int* room(int form, int lesson_day, int lesson_time, int group){}     -||-
 В-третьих, надо уметь получать список доступных кабинетов/учителей/предметов (доступных предметов с учётом учителя). Тут есть некоторая сложность. Этот список я хочу использовать как параметр у функции, которая даёт варианты для заполнения ( пример вызова функции: 
 " this->textBox1->AutoCompleteCustomSource->AddRange(gcnew cli::array< System::String^  >(6) {L"vfdavds", L"dwfEwraf", L"cedwftgwTE", L"VDEAGHBDXGCVB", L"\\FSZDVXBF", L"fdgbxvc "}); "). А это какой-то очень хитрый тип. Возможно, когда мы в нём разберёмся, его можно будет использовать и в первых функциях.
 
-See also AppModelAPI on Wiki
+See also [AppModelAPI] on Wiki
