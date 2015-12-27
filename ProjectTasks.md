@@ -1,0 +1,9 @@
+# Top-level Task Sheet #
+
+| **Task** | **Design Done** | **Dev Done** | **QA Done** | **Released** |
+|:---------|:----------------|:-------------|:------------|:-------------|
+| Main Window |                 |              |             |              |
+| Window - Lessons by day, time and class (full info) |                 |              |             |              |
+| Window - Lessons by day, time and class (w/o teacher) |                 |              |             |              |
+| Window - Room/class by day, time and teacher |                 |              |             |              |
+| Window - Teacher/(may be, class) by day, time and room |                 |              |             |              |
